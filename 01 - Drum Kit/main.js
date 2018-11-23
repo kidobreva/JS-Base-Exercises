@@ -16,8 +16,6 @@ function stopPlaying(e) {
     }    
 }
 
-const keys = document.querySelectorAll('.key');
-
 window.addEventListener('keydown', startPlaying);
 window.addEventListener('keyup', stopPlaying);
 
