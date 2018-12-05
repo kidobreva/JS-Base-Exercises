@@ -15,7 +15,12 @@ const inventors = [
     { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
   ];
 
+  // document.getElementById("col1").innerHTML = inventors.filter(inventor => inventor.first);
+
   function createTable (data, id) {
+    let inventorList = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599)
+                                .map(el => `${el.first}  ${el.last} ${el.year}`).join(', ');
+    console.log('I ', inventorList);
     let el = '<tbody>'
     for(var i = 0; i < data.length; i++){
       el+= '<tr>';
@@ -23,6 +28,12 @@ const inventors = [
       el+= '<td>' + data[i].last + '</td>';
       el+= '<td>' + data[i].year + '</td>';
       el+= '<td>' + data[i].passed + '</td>';
+      el+= '<td>' + 'Task' + (i + 1) + '</td>';
+      if(i === 0) {
+        el+= '<td>' + inventorList + '</td>';
+      }
+      
+      // el+= '<td>' + task2() + '</td>';
       el+= '</tr>';
     }
     el+='</tbody>';
@@ -31,7 +42,7 @@ const inventors = [
 
   createTable(inventors, 'tableData');
 
-  const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
+  // const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
 
   // 1. Filter the list of inventors for those who were born in the 1500's
   // document.querySelector('button').addEventListener('click', (event) => {
@@ -39,25 +50,29 @@ const inventors = [
   //   task1();
   // });
 
-  function task1(){
-    document.getElementById('task1').innerHTML = '';
-    let inventorsList = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599);
-    inventorsList.forEach(el => {
-           let p = document.createElement('p');
-           p.innerHTML = el.first + ' ' + el.last + ' ' + el.year + ' ' + el.passed;
-           document.getElementById('task1').appendChild(p);           
-          });
-    myFunction("task1");
-  } 
+  let inventorList = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599);
+  console.log('I ', inventorList);
 
-  function myFunction(id) {
-    var x = document.getElementById(id);
-      if (x.style.display === "none") {
-        x.style.display = "block";
-      } else {
-        x.style.display = "none";
-      }
-  }
+  // function task1(){
+  //   // document.getElementById('task1').innerHTML = '';
+  //   return inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599);
+  //   // inventorsList.forEach(el => {
+  //   //        let p = document.createElement('p');
+  //   //        p.innerHTML = el.first + ' ' + el.last + ' ' + el.year + ' ' + el.passed;
+  //   //        document.getElementById('task1').appendChild(p);           
+  //   //       });
+  //   // myFunction("task1");
+  //   // console.log(inventorsList);
+  // } 
+
+  // function myFunction(id) {
+  //   var x = document.getElementById(id);
+  //     if (x.style.display === "none") {
+  //       x.style.display = "block";
+  //     } else {
+  //       x.style.display = "none";
+  //     }
+  // }
 
   // 2. Give us an array of the inventors' first and last names
   function task2() {
@@ -67,19 +82,19 @@ const inventors = [
       return firstName + ' ' + lastName;
     });
 
-    let thead = '<thead>' + '<tr>' + '<th>' + 'Names' + '</th>' + '</tr>' + '</thead>'
+    // let thead = '<thead>' + '<tr>' + '<th>' + 'Names' + '</th>' + '</tr>' + '</thead>'
 
-    let el = '<tbody>'
-    for(var i = 0; i < inventorsNames.length; i++){
-      el+= '<tr>';
-      el+= '<td>' + inventorsNames[i] + '</td>';
-      el+= '</tr>';
-    }
-    el+='</tbody>';
-    document.getElementById('task2Data').innerHTML = el;
-    myFunction("task2Data");
-    // createTable(inventorsNames, 'task2Data');
-    console.table(inventorsNames);
+    // let el = '<tbody>'
+    // for(var i = 0; i < inventorsNames.length; i++){
+    //   el+= '<tr>';
+    //   el+= '<td>' + inventorsNames[i] + '</td>';
+    //   el+= '</tr>';
+    // }
+    // el+='</tbody>';
+    // document.getElementById('task2Data').innerHTML = el;
+    // myFunction("task2Data");
+    // // createTable(inventorsNames, 'task2Data');
+    // console.table(inventorsNames);
   }
   
 
