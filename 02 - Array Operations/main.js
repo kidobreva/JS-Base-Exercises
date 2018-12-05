@@ -15,109 +15,45 @@ const inventors = [
     { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
   ];
 
-  // document.getElementById("col1").innerHTML = inventors.filter(inventor => inventor.first);
-
-  function createTable (data, id) {
-    let inventorList = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599)
-                                .map(el => `${el.first}  ${el.last} ${el.year}`).join(', ');
-    console.log('I ', inventorList);
-    let el = '<tbody>'
-    for(var i = 0; i < data.length; i++){
-      el+= '<tr>';
-      el+= '<td>' + data[i].first + '</td>';
-      el+= '<td>' + data[i].last + '</td>';
-      el+= '<td>' + data[i].year + '</td>';
-      el+= '<td>' + data[i].passed + '</td>';
-      el+= '<td>' + 'Task' + (i + 1) + '</td>';
-      if(i === 0) {
-        el+= '<td>' + inventorList + '</td>';
-      }
-      
-      // el+= '<td>' + task2() + '</td>';
-      el+= '</tr>';
-    }
-    el+='</tbody>';
-    document.getElementById(id).innerHTML = el;
-  }
-
-  createTable(inventors, 'tableData');
-
-  // const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
-
   // 1. Filter the list of inventors for those who were born in the 1500's
   // document.querySelector('button').addEventListener('click', (event) => {
   //   event.preventDefault();
   //   task1();
   // });
-
-  let inventorList = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599);
-  console.log('I ', inventorList);
-
-  // function task1(){
-  //   // document.getElementById('task1').innerHTML = '';
-  //   return inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599);
-  //   // inventorsList.forEach(el => {
-  //   //        let p = document.createElement('p');
-  //   //        p.innerHTML = el.first + ' ' + el.last + ' ' + el.year + ' ' + el.passed;
-  //   //        document.getElementById('task1').appendChild(p);           
-  //   //       });
-  //   // myFunction("task1");
-  //   // console.log(inventorsList);
-  // } 
-
-  // function myFunction(id) {
-  //   var x = document.getElementById(id);
-  //     if (x.style.display === "none") {
-  //       x.style.display = "block";
-  //     } else {
-  //       x.style.display = "none";
-  //     }
-  // }
+  let inventorList = inventors.filter(inventor => inventor.year >= 1500 && inventor.year <= 1599)
+  .map(el => `${el.first}  ${el.last} ${el.year}`).join(', ');
 
   // 2. Give us an array of the inventors' first and last names
-  function task2() {
-    let inventorsNames = inventors.map(inventor => {
-      let firstName = inventor.first;
-      let lastName = inventor.last;
-      return firstName + ' ' + lastName;
-    });
-
-    // let thead = '<thead>' + '<tr>' + '<th>' + 'Names' + '</th>' + '</tr>' + '</thead>'
-
-    // let el = '<tbody>'
-    // for(var i = 0; i < inventorsNames.length; i++){
-    //   el+= '<tr>';
-    //   el+= '<td>' + inventorsNames[i] + '</td>';
-    //   el+= '</tr>';
-    // }
-    // el+='</tbody>';
-    // document.getElementById('task2Data').innerHTML = el;
-    // myFunction("task2Data");
-    // // createTable(inventorsNames, 'task2Data');
-    // console.table(inventorsNames);
-  }
+    let inventorsNames = inventors.map(inventor => `${inventor.first} ${inventor.last}`).join(', ');  
   
-
   // 3. Sort the inventors by birthdate, oldest to youngest
-  let inventorsBirthdays = inventors.map(inventor => inventor.year).sort((a, b) => a - b);
-  console.log(inventorsBirthdays);
+  let inventorsBirthdays = inventors.map(inventor => inventor.year).sort((a, b) => a - b).join(', ');
 
   // 4. How many years did all the inventors live?
   let inventorsLived = inventors.map(inventor => inventor.passed - inventor.year)
-                                .reduce((acc, years) => acc + years, 0);
-  console.log(inventorsLived);                              
+                                .reduce((acc, years) => acc + years, 0);      
 
   // 5. Sort the inventors by years lived
   let inventorsByYearsLived = inventors.map(inventor => {
     return inventor.passed - inventor.year
-  });
-  console.log(inventorsByYearsLived);
+  }).join(', ');
 
   // 6. Sort the people alphabetically by last name
+  let sortedByLasNames = inventors.map(name => name.last).sort().join(', ');
 
   // 7. Sum up the instances of each of these
   const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
   
+  let vehicles = data.reduce((allVehicles, vehicle) => {
+    if(allVehicles[vehicle]) {
+      allVehicles[vehicle]++;
+    } else {
+      allVehicles[vehicle] = 1;
+    }
+    return allVehicles;
+  }, {});
+  let vehiclesArr = Object.keys(vehicles).map(el => `${el}: ${vehicles[el]}`).join(', ');
+
   //////////////////////////////////////
   const peoples = [
     { name: 'Wes', year: 1988 },
@@ -135,12 +71,46 @@ const inventors = [
   ];
 
   // 8. Is at least one person 19 or older?
+  let person = peoples.map(p => 2018 - p.year).some(p => p >= 19);
   
   // 9. Is everyone 19 or older?
+  let person1 = peoples.map(p => 2018 - p.year).every(p => p >= 19);
 
   // 10. Find the comment with the ID of 823423
+  let comment = comments.find(c => c.id === 823423);
+  let commentArr = Object.keys(comment).map(el => `${el}: ${comment[el]}`).join(', ');
 
   // 11. Delete the comment with the ID of 823423
+  let deletedComment = comments.splice(comments.findIndex(c => c.id === 823423), 1)[0];
+  let deletedCommentArr = Object.keys(deletedComment).map(el => `${el}: ${deletedComment[el]}`).join(', ');
+
+  let arr = [];
+  arr.push(inventorList,
+           inventorsNames, 
+           inventorsBirthdays, 
+           inventorsLived, 
+           inventorsByYearsLived,
+           sortedByLasNames,
+           vehiclesArr,
+           person,
+           person1,
+           commentArr,
+           deletedCommentArr); 
+  console.log('Arr ', arr);
+
+  function createTable (data, id) {
+    let el = '<tbody>'
+    for(var i = 0; i < data.length; i++){
+      el+= '<tr>';
+      el+= '<td>' + 'Task' + (i + 1) + '</td>';
+      el+= '<td>' + data[i] + '</td>';
+      el+= '</tr>';
+    }
+    el+='</tbody>';
+    document.getElementById(id).innerHTML = el;
+  }
+
+  createTable(arr, 'tableData');
   
   // Bonus algorithms:
   
@@ -152,3 +122,7 @@ const inventors = [
           // reverseInt(900) => 9
           // reverseInt(-17) => -71
           // reverseInt(-60) => -6
+
+
+          
+    

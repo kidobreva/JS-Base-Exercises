@@ -1,7 +1,29 @@
-#show {
-    display: none;
+table {
+    width: 80%;
+    margin: 0 auto;
 }
 
-button {
+table, td, th {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 3px;
+}
+
+.legend {    
+    margin-left: 150px;
+    margin-top: 20px;
+}
+
+span {
     display: block;
+    padding: 2px 0;
+}
+
+.header {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
 }
