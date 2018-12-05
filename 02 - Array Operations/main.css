@@ -1,3 +1,7 @@
 #show {
     display: none;
 }
+
+button {
+    display: block;
+}

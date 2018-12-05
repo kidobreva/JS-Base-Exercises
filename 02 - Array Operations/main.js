@@ -15,7 +15,7 @@ const inventors = [
     { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
   ];
 
-  function createTable (data) {
+  function createTable (data, id) {
     let el = '<tbody>'
     for(var i = 0; i < data.length; i++){
       el+= '<tr>';
@@ -26,10 +26,10 @@ const inventors = [
       el+= '</tr>';
     }
     el+='</tbody>';
-    document.getElementById('tableData').innerHTML = el;
+    document.getElementById(id).innerHTML = el;
   }
 
-  createTable(inventors);
+  createTable(inventors, 'tableData');
 
   const people = ['Beck, Glenn', 'Becker, Carl', 'Beckett, Samuel', 'Beddoes, Mick', 'Beecher, Henry', 'Beethoven, Ludwig', 'Begin, Menachem', 'Belloc, Hilaire', 'Bellow, Saul', 'Benchley, Robert', 'Benenson, Peter', 'Ben-Gurion, David', 'Benjamin, Walter', 'Benn, Tony', 'Bennington, Chester', 'Benson, Leana', 'Bent, Silas', 'Bentsen, Lloyd', 'Berger, Ric', 'Bergman, Ingmar', 'Berio, Luciano', 'Berle, Milton', 'Berlin, Irving', 'Berne, Eric', 'Bernhard, Sandra', 'Berra, Yogi', 'Berry, Halle', 'Berry, Wendell', 'Bethea, Erin', 'Bevan, Aneurin', 'Bevel, Ken', 'Biden, Joseph', 'Bierce, Ambrose', 'Biko, Steve', 'Billings, Josh', 'Biondo, Frank', 'Birrell, Augustine', 'Black, Elk', 'Blair, Robert', 'Blair, Tony', 'Blake, William'];
 
@@ -60,12 +60,28 @@ const inventors = [
   }
 
   // 2. Give us an array of the inventors' first and last names
-  let inventorsNames = inventors.map(inventor => {
-    let firstName = inventor.first;
-    let lastName = inventor.last;
-    return firstName + ' ' + lastName;
-  });
-  console.log(inventorsNames);
+  function task2() {
+    let inventorsNames = inventors.map(inventor => {
+      let firstName = inventor.first;
+      let lastName = inventor.last;
+      return firstName + ' ' + lastName;
+    });
+
+    let thead = '<thead>' + '<tr>' + '<th>' + 'Names' + '</th>' + '</tr>' + '</thead>'
+
+    let el = '<tbody>'
+    for(var i = 0; i < inventorsNames.length; i++){
+      el+= '<tr>';
+      el+= '<td>' + inventorsNames[i] + '</td>';
+      el+= '</tr>';
+    }
+    el+='</tbody>';
+    document.getElementById('task2Data').innerHTML = el;
+    myFunction("task2Data");
+    // createTable(inventorsNames, 'task2Data');
+    console.table(inventorsNames);
+  }
+  
 
   // 3. Sort the inventors by birthdate, oldest to youngest
   let inventorsBirthdays = inventors.map(inventor => inventor.year).sort((a, b) => a - b);
