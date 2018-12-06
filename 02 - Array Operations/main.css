@@ -29,9 +29,14 @@ span {
 }
 
 .task12 {
+    padding-right: 40px;
     margin-left: 180px;
 }
 
 .result {
     margin-top: 10px;
+}
+
+.inputs {
+    display: flex;
 }

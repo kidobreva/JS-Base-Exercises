@@ -118,13 +118,7 @@ const inventors = [
     
     
     let resultField = document.querySelector('span.result');
-    
-    // function reverseString1(str) {
-    //   const result = '';
-    //   for(let i = str.length; i <= 1; i++) {
-    //     result += str[i];
-    //   }
-    // }    
+    let numberResult = document.querySelector('span.numberResult');
 
     function reverseString1() {
       let str = document.getElementsByTagName('input')[0].value;
@@ -148,6 +142,14 @@ const inventors = [
           // reverseInt(900) => 9
           // reverseInt(-17) => -71
           // reverseInt(-60) => -6
+
+    function reverseNumber() {      
+      let numberValue = document.getElementsByTagName('input')[1].value;
+      let reversed = numberValue.toString().split('').reverse().join('');
+      let result = Math.sign(numberValue) * parseInt(reversed);  
+      numberResult.innerHTML = result;
+      numberResult.style.dislpay = 'block';    
+    }
 
 
           
