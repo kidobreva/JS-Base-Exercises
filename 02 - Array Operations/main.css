@@ -12,7 +12,7 @@ th, td {
 }
 
 .legend {    
-    margin-left: 150px;
+    margin-left: 180px;
     margin-top: 20px;
 }
 
@@ -26,4 +26,12 @@ span {
     font-weight: bold;
     font-style: italic;
     text-decoration: underline;
+}
+
+.task12 {
+    margin-left: 180px;
+}
+
+.result {
+    margin-top: 10px;
 }

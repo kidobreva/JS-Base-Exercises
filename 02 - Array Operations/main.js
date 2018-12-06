@@ -95,8 +95,7 @@ const inventors = [
            person,
            person1,
            commentArr,
-           deletedCommentArr); 
-  console.log('Arr ', arr);
+           deletedCommentArr);
 
   function createTable (data, id) {
     let el = '<tbody>'
@@ -116,6 +115,33 @@ const inventors = [
   
   // 12. Write a function to reverse a string
           //reverseStr('hello') => 'olleh'
+    
+    
+    let resultField = document.querySelector('span.result');
+    
+    // function reverseString1(str) {
+    //   const result = '';
+    //   for(let i = str.length; i <= 1; i++) {
+    //     result += str[i];
+    //   }
+    // }    
+
+    function reverseString1() {
+      let str = document.getElementsByTagName('input')[0].value;
+      let result = '';
+      for(let i = str.length - 1; i >= 0; i--) {
+        result += str[i];
+      }
+      resultField.innerHTML = result;
+      resultField.style.dislpay = 'block';
+    }
+
+    function reverseString2() {
+      let str = document.getElementsByTagName('input')[0].value;
+      let result = str.split("").reduce((acc, ch) => ch + acc);
+      resultField.innerHTML = result;
+      resultField.style.dislpay = 'block';
+    }    
   
   // 13. Write a function that reverses an integer 
           // reverseInt(45) => 54
