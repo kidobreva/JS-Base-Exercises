@@ -6,6 +6,11 @@
       font-weight: 200;
     }
 
+    body {
+      margin: 0 auto;
+      width: 850px;
+    }
+
     *, *:before, *:after {
       box-sizing: inherit;
     }
@@ -13,7 +18,7 @@
     input {
       width: 100%;
       padding: 20px;
-	  margin: 0 10px;
+	    margin: 0 10px;
     }
 	
 	button {
@@ -43,7 +48,30 @@
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
     }
 
-
     .hl {
       background: #ffc600;
+    }
+
+    #result {      
+      padding-top: 50px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    div.days {
+      width: 25%;
+      padding: 0 10px;
+      margin-left: 20px;
+      text-align: center;
+      background: rgb(241, 241, 241);
+      border: 5px solid rgb(219, 219, 219);
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
+    }
+
+    .degreeIcon {
+      height: 15px;
+      width: 15px;
+      padding-left: 2px;
     }
