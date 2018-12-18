@@ -61,8 +61,10 @@
 
     div.days {
       width: 25%;
+      height: 300px;
       padding: 0 10px;
       margin-left: 20px;
+      margin-bottom: 20px;
       text-align: center;
       background: rgb(241, 241, 241);
       border: 5px solid rgb(219, 219, 219);

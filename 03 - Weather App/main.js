@@ -14,35 +14,44 @@ $('form').submit((e) => {
     function getData(res) { 
         console.log(res);       
         for (let i = 0; i < res.list.length; i += 8) {
-            let day = $('<div>').addClass('days').attr('id', 'div_' + (i + 1));
-            let cityName = $('<h3>').html(res.city.name + ' ' + res.city.country);
-            let date = $('<p>').html((res.list[i].dt_txt).slice(0, 10));
-            const degreeIcon = $('<img src="https://image.flaticon.com/icons/png/512/88/88692.png">').addClass('degreeIcon');
-            let currentTemp = $('<p>').html(Math.round(res.list[i].main.temp)).append(degreeIcon);
-            let weatherDescription = $('<p>').html(res.list[i].weather[0].description);
-            let icon = $('<img src="http://openweathermap.org/img/w/' + res.list[i].weather[0].icon + '.png"/>');
+                let day = $('<div>').addClass('days')
+                    .append('<h3>' + res.city.name + ' ' + res.city.country + '</h3>')
+                    .append('<p>' + (res.list[i].dt_txt).slice(0, 10) + '</p>')
+                    .append('<p>' + Math.round(res.list[i].main.temp)
+                                  + '<img class="degreeIcon" src="https://image.flaticon.com/icons/png/512/88/88692.png">'
+                                  + '</p>')
+                    .append('<p>' + res.list[i].weather[0].description + '</p>')
+                    .append('<img src="http://openweathermap.org/img/w/' + res.list[i].weather[0].icon + '.png"/>');
+                
+                $('#result').append(day);
 
-            day.append(cityName, date, currentTemp, weatherDescription, icon);
-            $('#result').append(day);
+                let addData = $('<div>').addClass('addData')
+                    .append('<p>Min: ' + Math.round(res.list[i].main.temp_min)
+                                    + '<img class="degreeIcon" src="https://image.flaticon.com/icons/png/512/88/88692.png">'
+                                    + '</p>')
+                    .append('<p>Max: ' + Math.round(res.list[i].main.temp_max)
+                                    + '<img class="degreeIcon" src="https://image.flaticon.com/icons/png/512/88/88692.png">'
+                                    + '</p>')
+                    .append('<p>Clouds: ' + res.list[i].clouds.all + '%' + '</p>')
+                    .append('<p>Wind: ' + res.list[i].wind.speed + ' m/s' + '</p>')
+                    .append('<p>Humidity: ' + res.list[i].main.humidity + '%' + '</p>')
+                    .append('<p>Pressure: ' + res.list[i].main.pressure + ' hPa' + '</p>');
+                
+                day.append(addData);
 
-            let addData = $('<div>').addClass('addData');
-            let minTemp = $('<p>').html('Min: ' + Math.round(res.list[i].main.temp_min));
-            let maxTemp = $('<p>').html('Max: ' + Math.round(res.list[i].main.temp_max));
-            let tempIcon = $('<img src="https://image.flaticon.com/icons/png/512/88/88692.png">').addClass('degreeIcon');
-            tempIcon.appendTo(maxTemp, minTemp);
-            let clouds = $('<p>').html('Clouds: ' + res.list[i].clouds.all + '%');
-            let wind = $('<p>').html('Wind: ' + res.list[i].wind.speed);
-            let humidity = $('<p>').html('Humidity: ' + res.list[i].main.humidity + '%');
-            let pressure = $('<p>').html('Pressure: ' + res.list[i].main.pressure);
-
-            addData.append(minTemp, maxTemp, clouds, wind, humidity, pressure);
-            day.append(addData);
-
-            addData.hide();
-        }     
+                addData.hide();
+            }     
         
         $('.days').click(function () {
-           $(this).find($('.addData')).toggle();
+            if($(this).hasClass('shown')) {
+                $(this).css('height', '300px');
+                $(this).removeClass('shown');                
+            } else {
+                $(this).css('height', '600px');
+                $(this).addClass('shown'); 
+            }
+            
+            $(this).find($('.addData')).toggle();
         })
     }    
 
